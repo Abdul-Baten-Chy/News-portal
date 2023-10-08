@@ -12,7 +12,7 @@ const Navbar = () => {
             
             </>
   const {user, logOut}= useContext(MyContex);
-  console.log(user);
+
     return (
         <div className="navbar bg-base-100">
         <div className="navbar-start">

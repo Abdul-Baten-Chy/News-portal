@@ -6,6 +6,8 @@ import About from "../Pages/About";
 import Career from "../Pages/Career";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import Details from "../Pages/Details";
+import Private from "../Pages/Private";
 
 
 const router = createBrowserRouter([
@@ -15,7 +17,13 @@ const router = createBrowserRouter([
       children:[
         {
             path:"/",
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=> fetch('news.json')
+        },
+        {
+          path:"/:id",
+          element:<Private><Details></Details></Private>,
+          loader:()=> fetch('news.json')
         },
         {
           path:"/about",

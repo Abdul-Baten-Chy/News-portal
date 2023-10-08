@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/navbar/Navbar";
 import { useContext } from "react";
 import { MyContex } from "../contex/Contex";
 
 const Login = () => {
+        const location =useLocation();
+        const navigate = useNavigate();
         const {signIn}=useContext(MyContex)
         const handleSignin =e=>{
              e.preventDefault();
@@ -11,6 +13,15 @@ const Login = () => {
              const email= form.get('email')
              const password = form.get('password')
              signIn(email, password)
+             .then(res=>{
+              console.log(res.user);
+              navigate(location?.state? location.state : '/')
+          })
+          .catch(err=>{
+              console.log(err);
+          })
+              
+             
         }
 
   return (

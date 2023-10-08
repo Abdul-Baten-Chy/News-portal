@@ -12,7 +12,13 @@ const Register = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get('email');
     const password = form.get('password');
-    createUser(email, password);
+    createUser(email, password)
+    .then(res=>{
+      console.log(res.user);
+  })
+  .catch(err=>{
+      console.log(err);
+  });
  }
  
  
